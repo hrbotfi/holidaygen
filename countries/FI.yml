@@ -1,0 +1,135 @@
+---
+name: Finland
+native-name: Suomi
+countrycode-alpha2: FI
+countrycode-alpha3: FIN
+countrycode-numeric: 246
+
+days:
+  -
+    name: New Year's Day
+    native-name: Uudenvuoden päivä
+    date:
+      day: 01
+      month: 01
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Epiphany
+    native-name: Loppiainen
+    date:
+      day: 06
+      month: 01
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Good Friday
+    native-name: Pitkäperjantai
+    special-date:
+      type: easter
+      days-difference: -2
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Easter
+    native-name: Pääsiäissunnuntai
+    special-date:
+      type: easter
+      days-difference: 0
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Easter Monday
+    native-name: Toinen pääsiäispäivä
+    special-date:
+      type: easter
+      days-difference: 1
+    public-holiday: true
+    common-holiday: true
+  -
+    name: May Day
+    native-name: Vappu
+    date:
+      day: 01
+      month: 05
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Ascension Day
+    native-name: Helatorstai
+    special-date:
+      type: easter
+      days-difference: 39
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Pentecost
+    native-name: Helluntai
+    special-date:
+      type: easter
+      days-difference: 49
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Juhannusaatto
+    native-name: Midsummer Eve
+    special-date:
+      type: midsummer
+      weekday: 4
+    public-holiday: false
+    common-holiday: true
+  -
+    name: Juhannus
+    native-name: Midsummer
+    special-date:
+      type: midsummer
+      weekday: 5
+    public-holiday: true
+    common-holiday: true
+  -
+    name: All Saints' Day
+    native-name: Pyhäinpäivä
+    special-date:
+      type: allsaints
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Independence Day
+    native-name: Itsenäisyyspäivä
+    date:
+      day: 06
+      month: 12
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Independence Day
+    native-name: Itsenäisyyspäivä
+    date:
+      day: 06
+      month: 12
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Christmas Eve
+    native-name: Jouluaatto
+    date:
+      day: 24
+      month: 12
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Christmas Day
+    native-name: Joulupäivä
+    date:
+      day: 25
+      month: 12
+    public-holiday: true
+    common-holiday: true
+  -
+    name: Boxing Day
+    native-name: Tapaninpäivä
+    date:
+      day: 26
+      month: 12
+    public-holiday: true
+    common-holiday: true
