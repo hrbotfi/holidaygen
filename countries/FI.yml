@@ -71,16 +71,16 @@ days:
     public-holiday: true
     common-holiday: true
   -
-    name: Juhannusaatto
-    native-name: Midsummer Eve
+    name: Midsummer Eve
+    native-name: Juhannusaatto
     special-date:
       type: midsummer
       weekday: 4
     public-holiday: false
     common-holiday: true
   -
-    name: Juhannus
-    native-name: Midsummer
+    name: Midsummer
+    native-name: Juhannus
     special-date:
       type: midsummer
       weekday: 5
@@ -91,14 +91,6 @@ days:
     native-name: Pyhäinpäivä
     special-date:
       type: allsaints
-    public-holiday: true
-    common-holiday: true
-  -
-    name: Independence Day
-    native-name: Itsenäisyyspäivä
-    date:
-      day: 06
-      month: 12
     public-holiday: true
     common-holiday: true
   -
