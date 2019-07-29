@@ -1,43 +1,66 @@
 from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta
-from yaml import load, FullLoader
+from yaml import load, safe_load
+from typing import Dict, List
+from pathlib import Path
 import os
-import csv
-import uuid
 
 
-def get_available_languages() -> []:
-    available_langs = []
-    for file in os.listdir(
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), "countries")
-    ):
-        if file.endswith(".yml"):
-            available_langs.append(str(file))
+class Holiday:
+    def __init__(self, filename: str) -> None:
+        fullpath = Path("countries", filename)
+        with open(fullpath, "r") as f:
+            data = safe_load(f)
 
-    return available_langs
+        self.days = data["days"]
+        self.names = data["names"]
+        self.alpha2 = data["countrycode-alpha2"]
+        self.alpha3 = data["countrycode-alpha3"]
+        self.numeric = data["countrycode-numeric"]
 
+    def get_country_code(self) -> str:
+        return self.alpha2 # According to ISO 3166-2
 
-def parse_yaml(filename: str, year: int) -> dict:
-    fullpath = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "countries", filename
-    )
-    with open(fullpath, "r") as f:
-        data = load(f, Loader=FullLoader)
+    def get_holidays(self, year: int) -> List[Dict]:
+        holidays = []
+        for day in self.days:
+            convertable_day = {}
+            convertable_day.update(day)
+            holidays.append(_convert_date(convertable_day, year))
 
-    formatted_days = []
-    for day in data["days"]:
-        formatted_days.append(_convert_date(day, year))
+        return holidays
 
-    data["days"] = formatted_days
-    return data
+    def get_base_info(self) -> Dict[str, str]:
+        return {
+            "countrycode-alpha2": self.alpha2,
+            "countrycode-alpha3": self.alpha3,
+            "countrycode-numeric": self.numeric
+        }
+
+    def get_names(self) -> Dict[str, str]:
+        names = {}
+        for name in self.names:
+            names[name] = self.names[name]
+        return names
+
+    @staticmethod
+    def get_available_country_files() -> Dict[str, str]:
+        available_country_files = {}
+        for file in os.listdir(
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "countries")
+        ):
+            if file.endswith(".yml"):
+                available_country_files[str(file).split(".")[0]] = os.path.join(os.path.dirname(os.path.abspath(__file__)), "countries", file)
+
+        return available_country_files
 
 
 def _convert_date(day: dict, year: int) -> dict:
-    if day["date"]:
+    if "date" in day:
         day["date"] = date(year, int(day["date"]["month"]), int(day["date"]["day"]))
 
-    if day["special-date"]:
+    if "special-date" in day:
         if day["special-date"]["type"] == "easter":
             day["date"] = _get_easter_date(year, day["special-date"]["days-difference"])
         if day["special-date"]["type"] == "midsummer":
@@ -47,6 +70,7 @@ def _convert_date(day: dict, year: int) -> dict:
 
         del day["special-date"]
 
+    day["date"] = str(day["date"]) # For serializability
     return day
 
 
@@ -64,15 +88,3 @@ def _get_midsummer_date(year: int, weekday: str):
 def _get_allsaints_date(year: int):
     return date(year, 10, 31) + relativedelta(weekday=5)
 
-
-def create_temp_csv_file(
-    holidaydata: dict, include_common_holidays: bool = True, tmpfolder: str = "/tmp"
-) -> str:
-    tempfile = "{}/{}.csv".format(tmpfolder, str(uuid.uuid4()))
-    with open(tempfile, "w") as newcsv:
-        writer = csv.writer(newcsv)
-        writer.writerow(
-            ["Name", "Native name", "Date", "Public holiday", "Common holiday"]
-        )
-
-    return tempfile

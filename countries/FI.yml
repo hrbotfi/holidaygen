@@ -1,127 +1,144 @@
 ---
-name: Finland
-native-name: Suomi
+names:
+  en: Finland
+  fi: Suomi
+  se: Finland
 countrycode-alpha2: FI
 countrycode-alpha3: FIN
 countrycode-numeric: 246
 
 days:
   -
-    name: New Year's Day
-    native-name: Uudenvuoden päivä
     date:
       day: 01
       month: 01
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: New Year's Day
+      fi: Uudenvuodenpäivä
+      se: Nyårsdagen
+    tags: [public, common]
   -
-    name: Epiphany
-    native-name: Loppiainen
     date:
       day: 06
       month: 01
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Epiphany
+      fi: Loppiainen
+      se: Trettondedag jul
+    tags: [public, common]
   -
-    name: Good Friday
-    native-name: Pitkäperjantai
     special-date:
       type: easter
       days-difference: -2
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Good Friday
+      fi: Pitkäperjantai
+      se: Långfredagen
+    tags: [public, common]
   -
-    name: Easter
-    native-name: Pääsiäissunnuntai
     special-date:
       type: easter
       days-difference: 0
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Easter
+      fi: Pääsiäissunnuntai
+      se: Påskdagen
+    tags: [public, common]
   -
-    name: Easter Monday
-    native-name: Toinen pääsiäispäivä
     special-date:
       type: easter
       days-difference: 1
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Easter Monday
+      fi: Toinen pääsiäispäivä
+      se: Annandag påsk
+    tags: [public, common]
   -
-    name: May Day
-    native-name: Vappu
     date:
       day: 01
       month: 05
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: May Day
+      fi: Vappu
+      se: Första maj
+    tags: [public, common]
   -
-    name: Ascension Day
-    native-name: Helatorstai
     special-date:
       type: easter
       days-difference: 39
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Ascension Day
+      fi: Helatorstai
+      se: Kristi himmelsfärdsdag
+    tags: [public, common]
   -
-    name: Pentecost
-    native-name: Helluntai
     special-date:
       type: easter
       days-difference: 49
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Pentecost
+      fi: Helluntai
+      se: Pingstdagen
+    tags: [public, common]
   -
-    name: Midsummer Eve
-    native-name: Juhannusaatto
     special-date:
       type: midsummer
       weekday: 4
-    public-holiday: false
-    common-holiday: true
+    names:
+      en: Midsummer Eve
+      fi: Juhannusaatto
+      se: Midsommarafton
+    tags: [common]
   -
-    name: Midsummer
-    native-name: Juhannus
     special-date:
       type: midsummer
       weekday: 5
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Midsummer
+      fi: Juhannus
+      se: Midsommardagen
+    tags: [public, common]
   -
-    name: All Saints' Day
-    native-name: Pyhäinpäivä
     special-date:
       type: allsaints
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: All Saints' Day
+      fi: Pyhäinpäivä
+      se: Alla helgons dag
+    tags: [public, common]
   -
-    name: Independence Day
-    native-name: Itsenäisyyspäivä
     date:
       day: 06
       month: 12
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Independence Day
+      fi: Itsenäisyyspäivä
+      se: Finlands självständighetsdag
+    tags: [public, common]
   -
-    name: Christmas Eve
-    native-name: Jouluaatto
     date:
       day: 24
       month: 12
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Christmas Eve
+      fi: Jouluaatto
+      se: Julafton
+    tags: [common]
   -
-    name: Christmas Day
-    native-name: Joulupäivä
     date:
       day: 25
       month: 12
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Christmas Day
+      fi: Joulupäivä
+      se: Juldagen
+    tags: [public, common]
   -
-    name: Boxing Day
-    native-name: Tapaninpäivä
     date:
       day: 26
       month: 12
-    public-holiday: true
-    common-holiday: true
+    names:
+      en: Boxing Day
+      fi: Tapaninpäivä
+      se: Annandag jul
+    tags: [public, common]
