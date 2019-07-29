@@ -1,0 +1,190 @@
+{
+    "countrycode-alpha2": "FI",
+    "countrycode-alpha3": "FIN",
+    "countrycode-numeric": 246,
+    "names": {
+        "en": "Finland",
+        "fi": "Suomi",
+        "se": "Finland"
+    },
+    "holidays": [
+        {
+            "date": "2024-01-01",
+            "names": {
+                "en": "New Year's Day",
+                "fi": "Uudenvuodenpäivä",
+                "se": "Nyårsdagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "date": "2024-01-06",
+            "names": {
+                "en": "Epiphany",
+                "fi": "Loppiainen",
+                "se": "Trettondedag jul"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "names": {
+                "en": "Good Friday",
+                "fi": "Pitkäperjantai",
+                "se": "Långfredagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2024-03-29"
+        },
+        {
+            "names": {
+                "en": "Easter",
+                "fi": "Pääsiäissunnuntai",
+                "se": "Påskdagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2024-03-31"
+        },
+        {
+            "names": {
+                "en": "Easter Monday",
+                "fi": "Toinen pääsiäispäivä",
+                "se": "Annandag påsk"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2024-04-01"
+        },
+        {
+            "date": "2024-05-01",
+            "names": {
+                "en": "May Day",
+                "fi": "Vappu",
+                "se": "Första maj"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "names": {
+                "en": "Ascension Day",
+                "fi": "Helatorstai",
+                "se": "Kristi himmelsfärdsdag"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2024-05-09"
+        },
+        {
+            "names": {
+                "en": "Pentecost",
+                "fi": "Helluntai",
+                "se": "Pingstdagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2024-05-19"
+        },
+        {
+            "names": {
+                "en": "Midsummer Eve",
+                "fi": "Juhannusaatto",
+                "se": "Midsommarafton"
+            },
+            "tags": [
+                "common"
+            ],
+            "date": "2024-06-21"
+        },
+        {
+            "names": {
+                "en": "Midsummer",
+                "fi": "Juhannus",
+                "se": "Midsommardagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2024-06-22"
+        },
+        {
+            "names": {
+                "en": "All Saints' Day",
+                "fi": "Pyhäinpäivä",
+                "se": "Alla helgons dag"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2024-11-02"
+        },
+        {
+            "date": "2024-12-06",
+            "names": {
+                "en": "Independence Day",
+                "fi": "Itsenäisyyspäivä",
+                "se": "Finlands självständighetsdag"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "date": "2024-12-24",
+            "names": {
+                "en": "Christmas Eve",
+                "fi": "Jouluaatto",
+                "se": "Julafton"
+            },
+            "tags": [
+                "common"
+            ]
+        },
+        {
+            "date": "2024-12-25",
+            "names": {
+                "en": "Christmas Day",
+                "fi": "Joulupäivä",
+                "se": "Juldagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "date": "2024-12-26",
+            "names": {
+                "en": "Boxing Day",
+                "fi": "Tapaninpäivä",
+                "se": "Annandag jul"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        }
+    ]
+}

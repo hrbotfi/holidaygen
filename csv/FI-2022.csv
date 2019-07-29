@@ -1,0 +1,16 @@
+name_en,name_fi,name_se,date,public_holiday,common_holiday
+New Year's Day,Uudenvuodenpäivä,Nyårsdagen,2022-01-01,yes,yes
+Epiphany,Loppiainen,Trettondedag jul,2022-01-06,yes,yes
+Good Friday,Pitkäperjantai,Långfredagen,2022-04-15,yes,yes
+Easter,Pääsiäissunnuntai,Påskdagen,2022-04-17,yes,yes
+Easter Monday,Toinen pääsiäispäivä,Annandag påsk,2022-04-18,yes,yes
+May Day,Vappu,Första maj,2022-05-01,yes,yes
+Ascension Day,Helatorstai,Kristi himmelsfärdsdag,2022-05-26,yes,yes
+Pentecost,Helluntai,Pingstdagen,2022-06-05,yes,yes
+Midsummer Eve,Juhannusaatto,Midsommarafton,2022-06-24,no,yes
+Midsummer,Juhannus,Midsommardagen,2022-06-25,yes,yes
+All Saints' Day,Pyhäinpäivä,Alla helgons dag,2022-11-05,yes,yes
+Independence Day,Itsenäisyyspäivä,Finlands självständighetsdag,2022-12-06,yes,yes
+Christmas Eve,Jouluaatto,Julafton,2022-12-24,no,yes
+Christmas Day,Joulupäivä,Juldagen,2022-12-25,yes,yes
+Boxing Day,Tapaninpäivä,Annandag jul,2022-12-26,yes,yes

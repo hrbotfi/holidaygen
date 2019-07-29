@@ -1,0 +1,16 @@
+name_en,name_fi,name_se,date,public_holiday,common_holiday
+New Year's Day,Uudenvuodenpäivä,Nyårsdagen,2021-01-01,yes,yes
+Epiphany,Loppiainen,Trettondedag jul,2021-01-06,yes,yes
+Good Friday,Pitkäperjantai,Långfredagen,2021-04-02,yes,yes
+Easter,Pääsiäissunnuntai,Påskdagen,2021-04-04,yes,yes
+Easter Monday,Toinen pääsiäispäivä,Annandag påsk,2021-04-05,yes,yes
+May Day,Vappu,Första maj,2021-05-01,yes,yes
+Ascension Day,Helatorstai,Kristi himmelsfärdsdag,2021-05-13,yes,yes
+Pentecost,Helluntai,Pingstdagen,2021-05-23,yes,yes
+Midsummer Eve,Juhannusaatto,Midsommarafton,2021-06-25,no,yes
+Midsummer,Juhannus,Midsommardagen,2021-06-19,yes,yes
+All Saints' Day,Pyhäinpäivä,Alla helgons dag,2021-11-06,yes,yes
+Independence Day,Itsenäisyyspäivä,Finlands självständighetsdag,2021-12-06,yes,yes
+Christmas Eve,Jouluaatto,Julafton,2021-12-24,no,yes
+Christmas Day,Joulupäivä,Juldagen,2021-12-25,yes,yes
+Boxing Day,Tapaninpäivä,Annandag jul,2021-12-26,yes,yes

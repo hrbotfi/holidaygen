@@ -1,0 +1,190 @@
+{
+    "countrycode-alpha2": "FI",
+    "countrycode-alpha3": "FIN",
+    "countrycode-numeric": 246,
+    "names": {
+        "en": "Finland",
+        "fi": "Suomi",
+        "se": "Finland"
+    },
+    "holidays": [
+        {
+            "date": "2023-01-01",
+            "names": {
+                "en": "New Year's Day",
+                "fi": "Uudenvuodenpäivä",
+                "se": "Nyårsdagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "date": "2023-01-06",
+            "names": {
+                "en": "Epiphany",
+                "fi": "Loppiainen",
+                "se": "Trettondedag jul"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "names": {
+                "en": "Good Friday",
+                "fi": "Pitkäperjantai",
+                "se": "Långfredagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2023-04-07"
+        },
+        {
+            "names": {
+                "en": "Easter",
+                "fi": "Pääsiäissunnuntai",
+                "se": "Påskdagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2023-04-09"
+        },
+        {
+            "names": {
+                "en": "Easter Monday",
+                "fi": "Toinen pääsiäispäivä",
+                "se": "Annandag påsk"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2023-04-10"
+        },
+        {
+            "date": "2023-05-01",
+            "names": {
+                "en": "May Day",
+                "fi": "Vappu",
+                "se": "Första maj"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "names": {
+                "en": "Ascension Day",
+                "fi": "Helatorstai",
+                "se": "Kristi himmelsfärdsdag"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2023-05-18"
+        },
+        {
+            "names": {
+                "en": "Pentecost",
+                "fi": "Helluntai",
+                "se": "Pingstdagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2023-05-28"
+        },
+        {
+            "names": {
+                "en": "Midsummer Eve",
+                "fi": "Juhannusaatto",
+                "se": "Midsommarafton"
+            },
+            "tags": [
+                "common"
+            ],
+            "date": "2023-06-23"
+        },
+        {
+            "names": {
+                "en": "Midsummer",
+                "fi": "Juhannus",
+                "se": "Midsommardagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2023-06-24"
+        },
+        {
+            "names": {
+                "en": "All Saints' Day",
+                "fi": "Pyhäinpäivä",
+                "se": "Alla helgons dag"
+            },
+            "tags": [
+                "public",
+                "common"
+            ],
+            "date": "2023-11-04"
+        },
+        {
+            "date": "2023-12-06",
+            "names": {
+                "en": "Independence Day",
+                "fi": "Itsenäisyyspäivä",
+                "se": "Finlands självständighetsdag"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "date": "2023-12-24",
+            "names": {
+                "en": "Christmas Eve",
+                "fi": "Jouluaatto",
+                "se": "Julafton"
+            },
+            "tags": [
+                "common"
+            ]
+        },
+        {
+            "date": "2023-12-25",
+            "names": {
+                "en": "Christmas Day",
+                "fi": "Joulupäivä",
+                "se": "Juldagen"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        },
+        {
+            "date": "2023-12-26",
+            "names": {
+                "en": "Boxing Day",
+                "fi": "Tapaninpäivä",
+                "se": "Annandag jul"
+            },
+            "tags": [
+                "public",
+                "common"
+            ]
+        }
+    ]
+}
