@@ -52,12 +52,14 @@ def create_csv_file(h: Holiday, year: int) -> None:
 
     print("Created CSV file {}".format(csv_file))
 
+
 def print_countries(country_files) -> None:
     for country in country_files:
         print(country.split(".")[0])
 
+
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog="holidays")
     parser.add_argument("--json", action="store_true", help="Create JSON files")
     parser.add_argument("--csv", action="store_true", help="Create CSV files")
     parser.add_argument(
@@ -80,9 +82,7 @@ def main():
 
     country_files = Holiday.get_available_country_files()
     if not args.json and not args.csv:
-        print(
-            "No creatable country files specified (see --help), these are available:"
-        )
+        print("No creatable country files specified (see --help), these are available:")
         print_countries(country_files)
         exit(0)
 

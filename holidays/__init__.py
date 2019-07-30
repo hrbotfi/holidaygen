@@ -6,6 +6,8 @@ from typing import Dict, List
 from pathlib import Path
 import os
 
+COUNTRIES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "countries")
+
 
 class Holiday:
     def __init__(self, filename: str) -> None:
@@ -20,7 +22,7 @@ class Holiday:
         self.numeric = data["countrycode-numeric"]
 
     def get_country_code(self) -> str:
-        return self.alpha2 # According to ISO 3166-2
+        return self.alpha2  # According to ISO 3166-2
 
     def get_holidays(self, year: int) -> List[Dict]:
         holidays = []
@@ -35,7 +37,7 @@ class Holiday:
         return {
             "countrycode-alpha2": self.alpha2,
             "countrycode-alpha3": self.alpha3,
-            "countrycode-numeric": self.numeric
+            "countrycode-numeric": self.numeric,
         }
 
     def get_names(self) -> Dict[str, str]:
@@ -47,11 +49,12 @@ class Holiday:
     @staticmethod
     def get_available_country_files() -> Dict[str, str]:
         available_country_files = {}
-        for file in os.listdir(
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "countries")
-        ):
+
+        for file in os.listdir(COUNTRIES_DIR):
             if file.endswith(".yml"):
-                available_country_files[str(file).split(".")[0]] = os.path.join(os.path.dirname(os.path.abspath(__file__)), "countries", file)
+                available_country_files[str(file).split(".")[0]] = os.path.join(
+                    COUNTRIES_DIR, file
+                )
 
         return available_country_files
 
@@ -70,7 +73,7 @@ def _convert_date(day: dict, year: int) -> dict:
 
         del day["special-date"]
 
-    day["date"] = str(day["date"]) # For serializability
+    day["date"] = str(day["date"])  # For serializability
     return day
 
 
@@ -87,4 +90,3 @@ def _get_midsummer_date(year: int, weekday: str):
 
 def _get_allsaints_date(year: int):
     return date(year, 10, 31) + relativedelta(weekday=5)
-
