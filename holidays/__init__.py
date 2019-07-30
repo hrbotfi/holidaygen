@@ -11,7 +11,7 @@ COUNTRIES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "countr
 
 class Holiday:
     def __init__(self, filename: str) -> None:
-        fullpath = Path("countries", filename)
+        fullpath = Path(COUNTRIES_DIR, filename)
         with open(fullpath, "r") as f:
             data = safe_load(f)
 
