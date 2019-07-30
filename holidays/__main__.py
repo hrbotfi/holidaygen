@@ -1,8 +1,9 @@
 #!/usr/bin/python3
+import datetime
 
 from holidays import Holiday
 
-from typing import Dict
+from typing import Dict, TextIO
 from pathlib import Path
 import argparse
 import csv
@@ -12,50 +13,68 @@ json_folder = "json"
 csv_folder = "csv"
 
 
-def create_json_file(h: Holiday, year: int) -> None:
-    json_file = Path(json_folder, "{}-{}.json".format(h.get_country_code(), year))
+def render_csv(f: TextIO, h: Holiday, year: int) -> None:
+    title_row = []
+    languages = sorted(set(h.names))
+    for language in languages:
+        title_row.append("name_{}".format(language))
+    title_row.append("date")
+    title_row.append("public_holiday")
+    title_row.append("common_holiday")
+    writer = csv.writer(f)
+    writer.writerow(title_row)
+    for holiday in h.get_holidays(year):
+        result_row = []
+        for language in languages:
+            result_row.append(holiday.names.get(language, ""))
+        result_row.append(holiday.date)
+        result_row.append("yes" if "public" in holiday.tags else "no")
+        result_row.append("yes" if "common" in holiday.tags else "no")
 
-    data = h.get_base_info()
-    data["names"] = h.get_names()
-    data["holidays"] = h.get_holidays(year)
+        writer.writerow(result_row)
+
+
+def format_json_object(o):
+    if isinstance(o, datetime.date):
+        return o.isoformat()
+    raise ValueError("Object {!r} is not serializable".format(o))
+
+
+def render_json(f: TextIO, h: Holiday, year: int) -> None:
+    data = {
+        "countrycode-alpha2": h.alpha2_country_code,
+        "countrycode-alpha3": h.alpha3_country_code,
+        "countrycode-numeric": h.numeric_country_code,
+        "names": h.names,
+        "holidays": [
+            {"names": bd.names, "tags": sorted(bd.tags), "date": bd.date}
+            for bd in h.get_holidays(year)
+        ],
+    }
+    json.dump(data, f, ensure_ascii=False, indent=4, default=format_json_object)
+
+
+def create_json_file(h: Holiday, year: int) -> None:
+    json_file = Path(json_folder, "{}-{}.json".format(h.alpha2_country_code, year))
+
     with open(json_file, "w") as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
+        render_json(f, h, year)
 
     print("Created JSON file {}".format(json_file))
 
 
 def create_csv_file(h: Holiday, year: int) -> None:
-    csv_file = Path(csv_folder, "{}-{}.csv".format(h.get_country_code(), year))
+    csv_file = Path(csv_folder, "{}-{}.csv".format(h.alpha2_country_code, year))
 
-    title_row = []
-    names = h.get_names()
-    for name in names:
-        title_row.append("name_{}".format(name))
-    title_row.append("date")
-    title_row.append("public_holiday")
-    title_row.append("common_holiday")
     with open(csv_file, "w") as f:
-        writer = csv.writer(f)
-        writer.writerow(title_row)
-        for holiday in h.get_holidays(year):
-            result_row = []
-            for name in names:
-                if name in holiday["names"]:
-                    result_row.append(holiday["names"][name])
-                else:
-                    result_row.append("")
-            result_row.append(holiday["date"])
-            result_row.append("yes" if "public" in holiday["tags"] else "no")
-            result_row.append("yes" if "common" in holiday["tags"] else "no")
-
-            writer.writerow(result_row)
+        render_csv(f, h, year)
 
     print("Created CSV file {}".format(csv_file))
 
 
 def print_countries(country_files) -> None:
     for country in country_files:
-        print(country.split(".")[0])
+        print(country)
 
 
 def main():
