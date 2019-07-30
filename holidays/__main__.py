@@ -1,13 +1,12 @@
 #!/usr/bin/python3
-import datetime
-
-from holidays import Holiday
-
-from typing import Dict, TextIO
-from pathlib import Path
 import argparse
 import csv
+import datetime
 import json
+from pathlib import Path
+from typing import TextIO
+
+from holidays import Holiday, get_available_country_files
 
 json_folder = "json"
 csv_folder = "csv"
@@ -99,35 +98,32 @@ def main():
         print("No valid year specified.")
         exit(1)
 
-    country_files = Holiday.get_available_country_files()
+    country_map = get_available_country_files()
     if not args.json and not args.csv:
         print("No creatable country files specified (see --help), these are available:")
-        print_countries(country_files)
+        print_countries(country_map)
         exit(0)
 
     if args.country:
-        country_filename = "{}.yml".format(args.country)
-        print("Creating specified file(s) for country {}.".format(args.country))
-        if country_filename not in country_files:
+        countries = [args.country]
+    else:
+        countries = sorted(country_map)
+
+    for country in countries:
+        print("Creating specified file(s) for country {}.".format(country))
+        if country not in country_map:
             print(
-                "Specified country {} does not exist in available country files. These are available:"
+                "Specified country {} does not exist in available country files. "
+                "These are available:".format(args.country)
             )
-            print_countries(country_files)
+            print_countries(country_map)
             exit(1)
 
-        h = Holiday(country_filename)
+        h = Holiday.for_country(country)
         if args.json:
             create_json_file(h, year)
         if args.csv:
             create_csv_file(h, year)
-    else:
-        print("Creating specified file(s) for all available countries.")
-        for country_filename in country_files:
-            h = Holiday(country_files[country_filename])
-            if args.json:
-                create_json_file(h, year)
-            if args.csv:
-                create_csv_file(h, year)
 
 
 if __name__ == "__main__":

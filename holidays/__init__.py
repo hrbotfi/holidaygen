@@ -1,7 +1,6 @@
 import datetime
 import os
 from collections import namedtuple
-from pathlib import Path
 from typing import Dict, Iterable, Optional, Set
 
 from dateutil.easter import easter
@@ -11,11 +10,36 @@ from yaml import safe_load
 COUNTRIES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "countries")
 
 
+def get_available_country_files() -> Dict[str, str]:
+    """
+    Retrieve a mapping of ISO3166-2 country code to YAML path
+    for all country files available.
+    """
+    available_country_files = {}
+
+    for file in os.listdir(COUNTRIES_DIR):
+        if file.endswith(".yml"):
+            available_country_files[str(file).split(".")[0]] = os.path.join(
+                COUNTRIES_DIR, file
+            )
+
+    return available_country_files
+
+
 class Holiday:
-    def __init__(self, filename: str) -> None:
-        fullpath = Path(COUNTRIES_DIR, filename)
-        with open(fullpath, "r") as f:
-            self.data = safe_load(f)
+    def __init__(self, data: dict) -> None:
+        self.data = data.copy()
+
+    @classmethod
+    def from_file(cls, filename: str) -> "Holiday":
+        with open(filename, "r") as f:
+            data = safe_load(f)
+        return cls(data=data)
+
+    @classmethod
+    def for_country(cls, country: str) -> "Holiday":
+        filename = os.path.join(COUNTRIES_DIR, "{}.yml".format(country))
+        return cls.from_file(filename)
 
     def get_holidays(self, year: int) -> Iterable["BoundDay"]:
         for day in self.data["days"]:
@@ -36,18 +60,6 @@ class Holiday:
     @property
     def numeric_country_code(self) -> str:
         return self.data["countrycode-numeric"]
-
-    @staticmethod
-    def get_available_country_files() -> Dict[str, str]:
-        available_country_files = {}
-
-        for file in os.listdir(COUNTRIES_DIR):
-            if file.endswith(".yml"):
-                available_country_files[str(file).split(".")[0]] = os.path.join(
-                    COUNTRIES_DIR, file
-                )
-
-        return available_country_files
 
 
 SPECIAL_DAYS = {
