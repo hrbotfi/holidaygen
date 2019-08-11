@@ -1,0 +1,148 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Holiday date API
+  description: An API to show holiday dates for different years and countries
+  contact:
+    name: Antti Myyrä
+    email: antti.myyra@gmail.com
+    url: https://github.com/hrbotfi/holidaygen
+  license:
+    name: MIT
+    url: https://tldrlegal.com/license/mit-license
+servers:
+  - url: https://holidays.hrbot.eu
+paths:
+  /holidays/:
+    get:
+      summary: Get available countries
+      description: Returns available countries and their details with their country codes as keys.
+      operationId: get_countries
+      responses:
+        '200':
+          description: Country details
+          schema:
+            $ref: '#/components/schemas/CountryList'
+        default:
+          description: unexpected error
+  /holidays/{country}:
+    get:
+      description: Returns details for a single country
+      operationId: country_details
+      parameters:
+        - name: country
+          in: path
+          required: true
+          description: Country as 2-letter code (eg. FI)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Country details
+          schema:
+            $ref: '#/components/schemas/Country'
+        '404':
+          description: Country not found
+        default:
+          description: unexpected error
+  /holidays/{country}/{year}/{month}/{day}:
+    get:
+      description: Returns details for a single country
+      operationId: country_details
+      parameters:
+        - name: country
+          in: path
+          required: true
+          description: Country as 2-letter code (eg. FI)
+          schema:
+            type: string
+        - name: year
+          in: path
+          required: true
+          description: Year (eg. 1999)
+          schema:
+            type: integer
+        - name: month
+          in: path
+          required: false
+          description: Month (eg. 10)
+          schema:
+            type: integer
+        - name: day
+          in: path
+          required: false
+          description: Day (eg. 18)
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of holidays for specified year (or month (or day))
+          schema:
+            $ref: '#/components/schemas/HolidayList'
+        '404':
+          description: Country not found
+        default:
+          description: unexpected error
+                
+components:
+  schemas:
+    Country:
+      type: object
+      required:
+        - country-code-alpha2
+        - country-code-alpha3
+        - names
+      properties:
+        country-code-alpha2:
+          type: string
+          example: FI
+        country-code-alpha3:
+          type: string
+          example: FIN
+        names:
+          type: list
+          items:
+            type: object
+            example: "{ 'en': 'Finland' }"
+
+    CountryList:
+      type: object
+      required: available_countries
+      properties:
+        available_countries:
+          type: array
+          items:
+            type: object
+            example: "FI"
+            items:
+              - $ref: "#/components/schemas/Country"
+
+    Holiday:
+      type: object
+      required:
+        - date
+        - names
+      properties:
+        date:
+          type: string
+          example: "2019-04-13"
+        names:
+          type: list
+          description: List of translations for the date
+          items:
+            type: object
+            example: "{ 'en': 'Easter Monday' }"
+        tags:
+          type: array
+          items:
+            type: string
+            example: public
+    
+    HolidayList:
+      type: object
+      required: holidays
+      properties:
+        holidays:
+          type: array
+          items:
+            - $ref: "#/components/schemas/Holiday"
