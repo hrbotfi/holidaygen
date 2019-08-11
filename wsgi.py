@@ -48,7 +48,7 @@ def get_country_description(country: str) -> Dict[str, Any]:
 
 
 @application.route("/holidays/<string:country>/<int:year>")
-def get_holidays(country: str, year: int) -> Tuple[Dict[str, Any], int]:
+def get_holidays_in_year(country: str, year: int) -> Tuple[Dict[str, Any], int]:
     if not _check_country_existance(country):
         abort(404)
     holidays = Holiday.for_country(country.upper()).get_holidays(year)
@@ -77,7 +77,7 @@ def get_holidays_in_month(country: str, year: int, month: int) -> Tuple[Dict[str
     return result, 200
 
 @application.route("/holidays/<string:country>/<int:year>/<int:month>/<int:day>")
-def check_date_for_holidays(country: str, year: int, month: int, day: int):
+def check_date_for_holidays(country: str, year: int, month: int, day: int) -> Tuple[Dict[str, Any], int]:
     if not _check_country_existance(country):
         abort(404)
     holidays = Holiday.for_country(country.upper()).get_holidays(year)
