@@ -27,16 +27,19 @@ def _get_serializable_holiday(holiday: Day) -> Dict[str, Any]:
 @application.route("/holidays")
 def available_countries() -> Tuple[Dict[str, Any], int]:
     countries = {
-        "available_countries": {},
+        "available_countries": [],
     }
     for country in get_available_country_files().keys():
-        countries["available_countries"][country] = get_country_description(country)
+        countries["available_countries"].append(get_country_description(country))
 
     return countries, 200
 
 @application.route("/holidays/<string:country>/")
 @application.route("/holidays/<string:country>")
 def get_country_description(country: str) -> Dict[str, Any]:
+    if not _check_country_existance(country):
+        abort(404)
+
     info = Holiday.for_country(country.upper())
     country_description = {
         "names": info.names,
@@ -51,6 +54,7 @@ def get_country_description(country: str) -> Dict[str, Any]:
 def get_holidays_in_year(country: str, year: int) -> Tuple[Dict[str, Any], int]:
     if not _check_country_existance(country):
         abort(404)
+
     holidays = Holiday.for_country(country.upper()).get_holidays(year)
     result = {
         "holidays": [],
@@ -65,6 +69,7 @@ def get_holidays_in_year(country: str, year: int) -> Tuple[Dict[str, Any], int]:
 def get_holidays_in_month(country: str, year: int, month: int) -> Tuple[Dict[str, Any], int]:
     if not _check_country_existance(country):
         abort(404)
+
     holidays = Holiday.for_country(country.upper()).get_holidays(year)
     result = {
         "holidays": [],
