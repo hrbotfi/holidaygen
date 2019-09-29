@@ -1,0 +1,9 @@
+version: '2'
+services:
+  holidayapi:
+    build: .
+    command: uwsgi --socket 0.0.0.0:5000 --uid uwsgi --plugins python3 --py-autoreload 3 --protocol http --wsgi wsgi:application
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 5000:5000

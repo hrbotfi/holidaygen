@@ -112,10 +112,7 @@ components:
         available_countries:
           type: array
           items:
-            type: object
-            example: "FI"
-            items:
-              - $ref: "#/components/schemas/Country"
+            - $ref: "#/components/schemas/Country"
 
     Holiday:
       type: object

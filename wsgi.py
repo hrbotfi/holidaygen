@@ -96,3 +96,6 @@ def check_date_for_holidays(country: str, year: int, month: int, day: int) -> Tu
             result["holidays"].append(_get_serializable_holiday(holiday))
     
     return result, 200
+
+if __name__ == "__main__":
+    application.run(host="0.0.0.0")
